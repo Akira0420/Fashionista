@@ -1,0 +1,43 @@
+<h1>投稿詳細</h1>
+<div class="fashion">
+  <p><%= @fashion.body %></p>
+  <p><%= @fashion.created_at %></p>
+</div>
+
+<%= link_to "編集する", edit_fashion_path(@fashion.id) %>
+<%= link_to "ホームに戻る", fashions_path %>
+<p>tags: <%= raw(@fashion.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+<%= flash[:notice] %>
+
+<% if user_signed_in? %>
+  <% if current_user.already_liked?(@fashion) %>
+    <%=link_to fashion_like_path(@fashion), method: :delete do%>
+      <i class="fas fa-heart like-btn"></i>
+    <%end%>
+  <% else %>
+    <%=link_to fashion_likes_path(@fashion), method: :post do%>
+      <i class="far fa-heart unlike-btn"></i>
+    <%end%>
+  <% end %>
+<% end %>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.comment %>
+    </div>
+    <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@fashion, @comment], local: true) do |f| %>
+      <%= f.text_area :comment%>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -60,8 +60,12 @@ gem 'dotenv-rails'
 
 gem 'acts-as-taggable-on'
 
-gem 'devise'
+# gem 'devise'
 
 group :production do
   gem 'pg'
+end
+
+group :development, :production, :test do
+  gem 'devise'
 end

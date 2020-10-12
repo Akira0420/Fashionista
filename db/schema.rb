@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_084624) do
+ActiveRecord::Schema.define(version: 2020_10_12_120642) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 2020_10_03_084624) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "fashion_id", null: false
-    t.string "ip"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.index ["fashion_id"], name: "index_likes_on_fashion_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -83,5 +83,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_084624) do
   add_foreign_key "comments", "fashions"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "fashions"
+  add_foreign_key "likes", "users"
   add_foreign_key "taggings", "tags"
 end

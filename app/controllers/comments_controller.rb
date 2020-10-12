@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
-    before_action :authenticate_user!
-
+  before_action :authenticate_user!
   def create
     fashion = Fashion.find(params[:fashion_id])
-    @comment = fashion.comments.build(comment_params) 
+    @comment = fashion.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "コメントしました"
@@ -13,9 +12,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
   private
-
     def comment_params
       params.require(:comment).permit(:comment)
     end

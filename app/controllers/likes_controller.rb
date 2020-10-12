@@ -3,7 +3,6 @@ class LikesController < ApplicationController
         @like = current_user.likes.create(fashion_id: params[:fashion_id])
         redirect_back(fallback_location: root_path)
     end
-    
     def destroy
         @like = Like.find_by(fashion_id: params[:fashion_id], user_id: current_user.id)
         @like.destroy

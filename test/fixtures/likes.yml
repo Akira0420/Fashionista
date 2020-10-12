@@ -2,6 +2,8 @@
 
 one:
   fashion: one
+  user: one
 
 two:
   fashion: two
+  user: two

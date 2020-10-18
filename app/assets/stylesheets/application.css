@@ -27,7 +27,7 @@
 
   header {
     background-color: #000000;
-    height: 80px;
+    height: 100px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;

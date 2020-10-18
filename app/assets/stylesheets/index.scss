@@ -29,6 +29,10 @@
     height: 100%;
   }
 
-.header-list {
-  float: right;
-}
+  .header-list {
+    float: right;
+  }
+
+  .carousel-inner{
+    flex: row;
+  }

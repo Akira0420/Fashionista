@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag 'new', :media => "all" %>
 
 <div class="post-container">
-
     <p class="title">投稿フォーム</p>
     <%= form_for(@fashion, :url => { controller:'fashions', action:'create'})do |f| %>
     <%= f.label :投稿内容 %>

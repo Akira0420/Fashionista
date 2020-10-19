@@ -1,11 +1,10 @@
 <h1>投稿詳細</h1>
 <div class="fashion">
   <p><%= @fashion.body %></p>
-  <p><%= @fashion.created_at %></p>
 </div>
 
-<%= link_to "編集する", edit_fashion_path(@fashion.id) %>
-<%= link_to "ホームに戻る", fashions_path %>
+<%= link_to "EDIT", edit_fashion_path(@fashion.id) %>
+<br><%= link_to "HOME", fashions_path %>
 <p>tags: <%= raw(@fashion.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
 <%= flash[:notice] %>
 

@@ -1,7 +1,9 @@
 <%= form_for @fashion do |f| %>
-    <%= f.label :body %>
+    <div class="edit">Edit Form</div><br>
+    <%= f.label :Text %>
     <%= f.text_field :body, :size => 140 %> 
-    <%= f.submit "edit" %>
-    <%= link_to "HOME", fashions_path %>
+    <div class="edit-btn">
+      <%= f.submit "EDIT" %>
+      <%= link_to "HOME", fashions_path %>
+    </div>
 <% end %>
-  

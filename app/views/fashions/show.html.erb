@@ -1,10 +1,8 @@
-<h1>投稿詳細</h1>
+<h2>Post Details</h2>
 <div class="fashion">
   <p><%= @fashion.body %></p>
 </div>
 
-<%= link_to "EDIT", edit_fashion_path(@fashion.id) %>
-<br><%= link_to "HOME", fashions_path %>
 <p>tags: <%= raw(@fashion.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
 <%= flash[:notice] %>
 
@@ -21,7 +19,7 @@
 <% end %>
 
 <div class="comment-wrapper">
-  <p>コメント一覧</p>
+  <p>Comment List</p>
   <% @comments.each do |c| %>
     <div>
       <%= c.user.email unless c.user.blank? %>
@@ -33,10 +31,16 @@
 
   <% if user_signed_in? %>
     <%= form_with(model: [@fashion, @comment], local: true) do |f| %>
+
       <%= f.text_area :comment%>
       <%= button_tag type: "submit" do %>
         <i class="far fa-comments"></i> Comments
       <% end %>
     <% end %>
   <% end %>
+</div>
+
+<div class="a">
+  <%= link_to "EDIT", edit_fashion_path(@fashion.id) %>
+  <%= link_to "HOME", fashions_path %>
 </div>

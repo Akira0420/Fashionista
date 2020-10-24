@@ -8,11 +8,15 @@
         <%= f.text_field :body,size: 140%>
         <br>
       <div class="field">
-        <%= f.label :image %>
-        <%= f.file_field :image %>
+        <div class="image">
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+        </div>
         <br>
-        <%= f.label :Tagging %>
-        <%= f.text_field :tag_list %>
+        <div class="tag">
+          <%= f.label :Tagging %>
+          <%= f.text_field :tag_list %>
+        </div>
       </div>
     <%= f.submit "Submit"%>
     <br>
